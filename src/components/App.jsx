@@ -27,17 +27,15 @@ export const App = () => {
     }));
   };
 
-  const visibleContacts = () => {
+  const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(normalizedFilter, 0);
-    });
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter, 0)
+    );
   };
 
   const inputChangeValue = evt => {
-    return setFilter({
-      [evt.target.name]: evt.target.value,
-    });
+    setFilter(evt.currentTarget.value);
   };
 
   const formSubmitSearchHandle = data => {
@@ -56,6 +54,8 @@ export const App = () => {
       prevContacts.filter(item => item.id !== contactId)
     );
   };
+
+  const visibleContacts = getVisibleContacts();
 
   return (
     <section>
