@@ -35,10 +35,6 @@ export const App = () => {
     );
   };
 
-  const inputChangeValue = evt => {
-    setFilter(evt.currentTarget.value);
-  };
-
   const formSubmitSearchHandle = data => {
     const searchResult = contacts.find(contact => contact.name === data.name);
     if (!searchResult) {
@@ -63,7 +59,7 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm onSubmitHandler={formSubmitSearchHandle} />
       <h2>Contacts</h2>
-      <Filter filter={filter} onChange={inputChangeValue} />
+      <Filter filter={filter} onChange={setFilter} />
       <ContactList list={visibleContacts} onDeleteItem={deleteItem} />
     </section>
   );
