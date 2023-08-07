@@ -22,9 +22,10 @@ export const App = () => {
   }, [contacts]);
 
   const formSubmitHandler = data => {
-    return setContacts(prevContacts => ({
-      contacts: [{ id: nanoid(), ...data }, ...prevContacts],
-    }));
+    return setContacts(prevContacts => [
+      { id: nanoid(), ...data },
+      ...prevContacts,
+    ]);
   };
 
   const getVisibleContacts = () => {
